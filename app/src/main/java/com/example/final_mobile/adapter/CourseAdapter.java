@@ -65,8 +65,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         holder.course_name.setText(course.getCourse_name());
         holder.day_of_the_week.setText(course.getDay_of_the_week());
         holder.time_of_course.setText(course.getTime_of_course());
-        holder.capacity.setText(course.getCapacity());
-        holder.duration.setText(course.getDuration());
+        holder.capacity.setText(String.valueOf(course.getCapacity()));
+        holder.duration.setText(String.valueOf(course.getDuration()));
         holder.type_of_class.setText(course.getType_of_class());
         holder.price_per_class.setText(String.valueOf(course.getPrice_per_class()));
         holder.description.setText(course.getDescription());

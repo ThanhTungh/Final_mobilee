@@ -119,7 +119,7 @@ public class YogaCourse {
                     + COLUMN_CAPACITY + " INTEGER,"
                     + COLUMN_DURATION + " INTEGER,"
                     + COLUMN_TYPE_OF_CLASS + " TEXT,"
-                    + COLUMN_PRICE_PER_CLASS + " REAL,"
+                    + COLUMN_PRICE_PER_CLASS + " DOUBLE,"
                     + COLUMN_DESCRIPTION + " TEXT"
                     + ")";
 }
