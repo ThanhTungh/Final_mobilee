@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.final_mobile.model.YogaClass;
+import com.example.final_mobile.model.YogaCourse;
 
 import java.util.ArrayList;
 
@@ -83,7 +84,7 @@ public class YogaClassDatabaseHelper extends SQLiteOpenHelper {
         values.put(YogaClass.COLUMN_CLASS_INSTANCE_CLASS_DATE, yogaClass.getYoga_class_date());
         values.put(YogaClass.COLUMN_CLASS_INSTANCE_COMMENT, yogaClass.getYoga_class_comment());
 
-        int rowsUpdated = db.update(YogaClass.TABLE_NAME, values, YogaClass.COLUMN_CLASS_INSTANCE_ID + " = ? ",
+        int rowsUpdated = db.update(YogaClass.TABLE_NAME, values, YogaClass.COLUMN_CLASS_INSTANCE_ID + " =? ",
                 new String[]{String.valueOf(yogaClass.getYoga_class_id())});
 
         db.close(); // Close the database
@@ -98,6 +99,41 @@ public class YogaClassDatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(yogaClass.getYoga_class_id())}
         );
         db.close();
+    }
+
+    public YogaClass getClass(long id){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(YogaClass.TABLE_NAME,
+                new String[]{
+                        YogaClass.COLUMN_CLASS_INSTANCE_ID,
+                        YogaClass.COLUMN_CLASS_INSTANCE_COURSE_ID,
+                        YogaClass.COLUMN_CLASS_INSTANCE_TEACHER_NAME,
+                        YogaClass.COLUMN_CLASS_INSTANCE_CLASS_DATE,
+                        YogaClass.COLUMN_CLASS_INSTANCE_COMMENT},
+                YogaClass.COLUMN_CLASS_INSTANCE_ID + "=?",
+                new String[]{
+                        String.valueOf(id)
+                },
+                null,
+                null,
+                null,
+                null);
+
+        if (cursor !=null)
+            cursor.moveToFirst();
+
+        YogaClass yogaClass = new YogaClass(
+                cursor.getInt(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_ID)),
+                cursor.getInt(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_COURSE_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_TEACHER_NAME)),
+                cursor.getString(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_CLASS_DATE)),
+                cursor.getString(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_COMMENT))
+        );
+
+        cursor.close();
+        return yogaClass;
+
     }
 
 }

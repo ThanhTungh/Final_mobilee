@@ -1,6 +1,7 @@
 package com.example.final_mobile;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -36,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<YogaCourse> courseList  = new ArrayList<>();
     private RecyclerView recyclerView;
     private DatabaseHelper db;
+
+    public void changeToClassActivity(int course_id){
+        Intent intent = new Intent(MainActivity.this, YogaClassMainActivity.class);
+        intent.putExtra("course_id", course_id);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

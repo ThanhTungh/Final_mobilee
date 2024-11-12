@@ -71,7 +71,7 @@ public class YogaClass {
                     + COLUMN_CLASS_INSTANCE_COURSE_ID + " INTEGER,"
                     + COLUMN_CLASS_INSTANCE_TEACHER_NAME + " TEXT,"
                     + COLUMN_CLASS_INSTANCE_CLASS_DATE + " TEXT,"
-                    + COLUMN_CLASS_INSTANCE_COMMENT + " TEXT"
+                    + COLUMN_CLASS_INSTANCE_COMMENT + " TEXT,"
                     + "FOREIGN KEY(" + COLUMN_CLASS_INSTANCE_COURSE_ID + ") REFERENCES " + YogaCourse.TABLE_NAME + "(" + YogaCourse.COLUMN_ID + ")"
                     + ")";
 }

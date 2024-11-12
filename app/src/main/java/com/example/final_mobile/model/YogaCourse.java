@@ -2,7 +2,7 @@ package com.example.final_mobile.model;
 
 public class YogaCourse {
     public static final String TABLE_NAME = "yoga_course";
-    public static final String COLUMN_ID = "yoga_course_id";
+    public static final String  COLUMN_ID = "yoga_course_id";
     public static final String COLUMN_NAME = "course_name";
     public static final String COLUMN_DAY_OF_THE_WEEK = "day_of_the_week";
     public static final String COLUMN_TIME_OF_COURSE = "time_of_course";
