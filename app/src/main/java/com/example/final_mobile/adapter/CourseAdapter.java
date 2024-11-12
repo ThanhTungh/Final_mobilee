@@ -1,9 +1,11 @@
 package com.example.final_mobile.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.final_mobile.MainActivity;
 import com.example.final_mobile.R;
+import com.example.final_mobile.YogaClassMainActivity;
 import com.example.final_mobile.model.YogaCourse;
 
 import java.util.ArrayList;
@@ -29,6 +32,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         public TextView type_of_class;
         public TextView price_per_class;
         public TextView description;
+        public Button listClass;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -40,6 +44,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
             this.type_of_class = itemView.findViewById(R.id.type_of_class);
             this.price_per_class = itemView.findViewById(R.id.price_per_class);
             this.description = itemView.findViewById(R.id.description);
+            this.listClass = itemView.findViewById(R.id.listClass);
         }
     }
 
@@ -77,10 +82,25 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
                 mainActivity.addAndEditCourses(true, course, holder.getAdapterPosition());
             }
         });
+
+        holder.listClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeToClassActivity(course.getId());
+            }
+        });
+
     }
     //cho biết số phần tử của dữ liệu
     @Override
     public int getItemCount() {
         return courseList.size();
+    }
+
+    public void changeToClassActivity(int id)
+    {
+        Intent intent = new Intent(context, YogaClassMainActivity.class);
+        intent.putExtra("course_id", id);
+        context.startActivity(intent);
     }
 }
