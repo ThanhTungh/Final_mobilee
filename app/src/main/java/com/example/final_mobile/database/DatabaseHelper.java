@@ -75,18 +75,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return course;
 
     }
+
     public ArrayList<YogaCourse> getAllCourse(){
         ArrayList<YogaCourse> courses = new ArrayList<>();
-
-
+//        Select all courses from table
         String selectQuery = "SELECT * FROM " +YogaCourse.TABLE_NAME + " ORDER BY "+
                 YogaCourse.COLUMN_ID + " DESC";
+
         SQLiteDatabase db = this.getWritableDatabase();
+
         Cursor cursor = db.rawQuery(selectQuery, null);
 
+        //cursor.moveToFirst() return true
         if (cursor.moveToFirst()){
             do{
+                //create new course object
                 YogaCourse course = new YogaCourse();
+                //set all properties of course object
                 course.setId(cursor.getInt(cursor.getColumnIndexOrThrow(YogaCourse.COLUMN_ID)));
                 course.setCourse_name(cursor.getString(cursor.getColumnIndexOrThrow(YogaCourse.COLUMN_NAME)));
                 course.setDay_of_the_week(cursor.getString(cursor.getColumnIndexOrThrow(YogaCourse.COLUMN_DAY_OF_THE_WEEK)));
@@ -97,17 +102,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 course.setPrice_per_class(cursor.getDouble(cursor.getColumnIndexOrThrow(YogaCourse.COLUMN_PRICE_PER_CLASS)));
                 course.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(YogaCourse.COLUMN_DESCRIPTION)));
 
-
                 courses.add(course);
 
             }while(cursor.moveToNext());
         }
 
+        cursor.close();
         db.close();
 
         return courses;
     }
     public long insertCourse(String name, String day_of_the_week, String time_of_course, int capacity, int duration, String type_of_class, double price_per_class, String description){
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 

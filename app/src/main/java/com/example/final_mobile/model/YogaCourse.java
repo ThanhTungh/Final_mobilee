@@ -2,7 +2,7 @@ package com.example.final_mobile.model;
 
 public class YogaCourse {
     public static final String TABLE_NAME = "yoga_course";
-    public static final String  COLUMN_ID = "yoga_course_id";
+    public static final String COLUMN_ID = "yoga_course_id";
     public static final String COLUMN_NAME = "course_name";
     public static final String COLUMN_DAY_OF_THE_WEEK = "day_of_the_week";
     public static final String COLUMN_TIME_OF_COURSE = "time_of_course";
@@ -21,7 +21,7 @@ public class YogaCourse {
     private String type_of_class;
     private double price_per_class;
     private String descriptions;
-
+    //constructor, hàm khởi tạo
     public YogaCourse(int id, String course_name, String day_of_the_week, String time_of_course, int capacity, int duration, String type_of_class, double price_per_class, String descriptions) {
         this.id = id;
         this.course_name = course_name;
@@ -33,8 +33,9 @@ public class YogaCourse {
         this.price_per_class = price_per_class;
         this.descriptions = descriptions;
     }
-
+    //constructor, hàm khởi tạo
     public YogaCourse() {
+
     }
 
     public int getId() {

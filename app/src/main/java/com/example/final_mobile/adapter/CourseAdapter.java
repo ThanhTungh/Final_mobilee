@@ -86,9 +86,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         holder.listClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context, YogaClassMainActivity.class);
-//                intent.putExtra("course_id", course.getId());
-//                mainActivity.startActivity(intent);
+
                 mainActivity.changeToClassActivity(course.getId());
             }
         });
@@ -100,10 +98,4 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.MyViewHold
         return courseList.size();
     }
 
-//    public void changeToClassActivity(int id)
-//    {
-//        Intent intent = new Intent(context, YogaClassMainActivity.class);
-//        intent.putExtra("course_id", id);
-//        context.startActivity(intent);
-//    }
 }

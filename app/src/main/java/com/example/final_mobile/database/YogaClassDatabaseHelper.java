@@ -100,6 +100,33 @@ public class YogaClassDatabaseHelper extends SQLiteOpenHelper {
         );
         db.close();
     }
+    //Get all class by teacher name
+    public ArrayList<YogaClass> getAllClassesByTeacherName(String teacherName){
+        ArrayList<YogaClass> classes = new ArrayList<>();
+
+        String selectQuery = "SELECT * FROM " + YogaClass.TABLE_NAME +
+                " WHERE " + YogaClass.COLUMN_CLASS_INSTANCE_TEACHER_NAME + " LIKE ?";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{"%" + teacherName + "%"});
+
+        if (cursor.moveToFirst()){
+            do{
+                YogaClass yogaClass = new YogaClass();
+                yogaClass.setYoga_class_id(cursor.getInt(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_ID)));
+                yogaClass.setYoga_class_course_id(cursor.getInt(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_COURSE_ID)));
+                yogaClass.setYoga_class_teacher_name(cursor.getString(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_TEACHER_NAME)));
+                yogaClass.setYoga_class_date(cursor.getString(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_CLASS_DATE)));
+                yogaClass.setYoga_class_comment(cursor.getString(cursor.getColumnIndexOrThrow(YogaClass.COLUMN_CLASS_INSTANCE_COMMENT)));
+
+                classes.add(yogaClass);
+
+            }while(cursor.moveToNext());
+        }
+
+        db.close();
+
+        return classes;
+    }
 
     public YogaClass getClass(long id){
 

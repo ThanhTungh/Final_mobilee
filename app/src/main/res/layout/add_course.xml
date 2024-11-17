@@ -19,7 +19,7 @@
     <EditText
         android:id="@+id/add_course_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="49dp"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint=" New Course Name "
@@ -27,56 +27,59 @@
         android:lines="4"
         android:textSize="16sp" />
 
-    <EditText
+    <!--    <EditText-->
+<!--        android:id="@+id/add_day_of_the_week"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:gravity="top"-->
+<!--        android:hint=" New Day of the Week "-->
+<!--        android:inputType="textCapSentences|textMultiLine"-->
+<!--        android:lines="4"-->
+<!--        android:textSize="16sp" />-->
+
+    <Spinner
         android:id="@+id/add_day_of_the_week"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:gravity="top"
-        android:hint=" New Day of the Week "
-        android:inputType="textCapSentences|textMultiLine"
-        android:lines="4"
-        android:textSize="16sp" />
+        android:layout_height="64dp" />
+
     <EditText
         android:id="@+id/add_time_of_course"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginTop="15dp"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint=" New Time of Course "
         android:inputType="textCapSentences|textMultiLine"
         android:lines="4"
         android:textSize="16sp" />
+
     <EditText
         android:id="@+id/add_capacity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="66dp"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint=" Capacity "
-        android:inputType="textCapSentences|textMultiLine"
         android:lines="4"
         android:textSize="16sp" />
+
     <EditText
         android:id="@+id/add_duration"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint=" Duration "
         android:inputType="textCapSentences|textMultiLine"
         android:lines="4"
         android:textSize="16sp" />
-    <EditText
+
+    <Spinner
         android:id="@+id/add_type_of_class"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:gravity="top"
-        android:hint=" Type of Class "
-        android:inputType="textCapSentences|textMultiLine"
-        android:lines="4"
-        android:textSize="16sp" />
+        android:layout_height="67dp" />
     <EditText
         android:id="@+id/add_price_per_class"
         android:layout_width="match_parent"
