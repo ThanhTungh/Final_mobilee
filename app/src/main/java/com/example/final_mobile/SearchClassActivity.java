@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.final_mobile.adapter.ClassAdapter;
 import com.example.final_mobile.adapter.CourseAdapter;
+import com.example.final_mobile.adapter.SearchAdapter;
 import com.example.final_mobile.database.DatabaseHelper;
 import com.example.final_mobile.database.YogaClassDatabaseHelper;
 import com.example.final_mobile.model.YogaClass;
@@ -33,7 +34,7 @@ public class SearchClassActivity extends AppCompatActivity {
     private RecyclerView recycler_view_class;
     private EditText edit_search;
     private ArrayList<YogaClass> classList;
-    private ClassAdapter classAdapter;
+    private SearchAdapter searchAdapter;
     private YogaClassDatabaseHelper dbClass;
     private ImageView searchButton;
 
@@ -63,12 +64,12 @@ public class SearchClassActivity extends AppCompatActivity {
                 String search = edit_search.getText().toString().trim();
                 classList.clear();
                 classList.addAll(dbClass.getAllClassesByTeacherName(search));
-                classAdapter = new ClassAdapter(classList,SearchClassActivity.this);
+                searchAdapter = new SearchAdapter(classList,SearchClassActivity.this,SearchClassActivity.this);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                 recycler_view_class.setLayoutManager(layoutManager);
                 recycler_view_class.setItemAnimator(new DefaultItemAnimator());
-                recycler_view_class.setAdapter(classAdapter);
-                classAdapter.notifyDataSetChanged();
+                recycler_view_class.setAdapter(searchAdapter);
+                searchAdapter.notifyDataSetChanged();
             }
         });
 

@@ -74,7 +74,7 @@ public class YogaClassMainActivity extends AppCompatActivity {
         }
         classList.addAll(dbClass.getAllClasses(course_id));
 
-        classAdapter = new ClassAdapter( classList, YogaClassMainActivity.this);
+        classAdapter = new ClassAdapter( classList, this,YogaClassMainActivity.this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recycler_view_class.setLayoutManager(layoutManager);
         recycler_view_class.setItemAnimator(new DefaultItemAnimator());
@@ -195,6 +195,14 @@ public class YogaClassMainActivity extends AppCompatActivity {
                             }
                         }
                 );
+        if (isUpdated) {
+            alerDialogBuilder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel(); // Hoặc bất kỳ hành động nào khác bạn muốn
+                }
+            });
+        }
         final AlertDialog alertDialog = alerDialogBuilder.create();
         alertDialog.show();
 
